@@ -1,63 +1,85 @@
 # Conversor de Texto para Fala (TTS) 🗣️🎧
 
-Este projeto é um **Conversor de Texto para Fala (TTS)** desenvolvido em Python com uma interface web moderna utilizando Streamlit. Ele permite que os usuários insiram um texto e gerem um arquivo de áudio no formato MP3. 🎵
+Este projeto é um **Conversor de Texto para Fala (TTS)** desenvolvido em Python com uma interface web criada com [Streamlit](https://streamlit.io/). A aplicação permite que o usuário insira um texto, traduza para outro idioma, gere áudios (tanto do texto original quanto do traduzido) e baixe os arquivos MP3 resultantes.
 
 ## Objetivo 🎯
 
-O objetivo deste projeto é facilitar a conversão de textos em áudio, proporcionando uma interface intuitiva e visualmente atraente. Seja para estudos, acessibilidade ou automação, este conversor é uma solução prática e eficiente. 🚀
+Fornecer uma solução prática para converter textos em áudio com funcionalidades adicionais como tradução e edição, facilitando o acesso à informação para estudos, acessibilidade e automação.
 
 ## Funcionalidades ✨
 
-- Interface web estilizada com Streamlit.
-- Entrada de texto personalizada.
-- Geração de arquivos de áudio no formato MP3.
-- Mensagem de sucesso com fundo escuro para melhor contraste.
-- Botão para download do arquivo gerado.
-
-## Como funciona? ⚙️
-
-1. O usuário insere o texto na área de entrada da interface.
-2. Ao clicar no botão "Gerar Áudio", o texto é convertido em áudio utilizando a biblioteca `gTTS`.
-3. O áudio é processado e exportado no formato MP3 com a ajuda da biblioteca `pydub`.
-4. O usuário pode baixar o arquivo gerado diretamente pela interface.
+- **Entrada de Texto Personalizada:** Insira o texto de sua preferência.
+- **Tradução do Texto:** Traduz o texto inserido para o idioma selecionado utilizando a biblioteca `googletrans`.
+- **Geração de Áudio Original:** Converte o texto em áudio usando a biblioteca `pyttsx3`.
+- **Geração de Áudio Traduzido:** Converte a tradução em áudio utilizando a biblioteca `gTTS` e processa o resultado com `pydub`.
+- **Edição e Reset da Interface:** Permite editar a tradução (copiando o conteúdo para o campo de entrada) e resetar a interface para uma nova conversão.
+- **Download dos Áudios:** Baixe os arquivos de áudio gerados (tanto os originais quanto os traduzidos).
 
 ## Requisitos 🛠️
 
-Certifique-se de ter as seguintes dependências instaladas antes de executar o projeto:
-
-- Python 3.6 ou superior 🐍
-- Bibliotecas Python:
+- **Python 3.6+**  
+- **Bibliotecas Python:**
   - `streamlit`
   - `gTTS`
   - `pydub`
-- FFmpeg (necessário para o funcionamento do `pydub`) 🎥
+  - `googletrans==4.0.0-rc1` *(recomendado)*
+  - `pyttsx3`
+- **FFmpeg:** Necessário para o funcionamento adequado do `pydub`.
 
-## Como executar? ▶️
+## Instalação e Configuração ▶️
 
-1. Clone este repositório ou copie os arquivos para o seu ambiente local. 📂
-2. Instale as dependências necessárias:
+1. **Clone o repositório ou copie os arquivos** para o seu ambiente local:
    ```bash
-   pip install streamlit gtts pydub
+   git clone <URL_do_repositório>
+   cd Conversor-TTS
    ```
-3. Certifique-se de que o FFmpeg está instalado e configurado no seu sistema. 🛠️
-4. Execute o aplicativo Streamlit:
+2. **Instale as dependências necessárias:**
    ```bash
-   streamlit run app.py
+   pip install streamlit gtts pydub googletrans==4.0.0-rc1 pyttsx3
    ```
-5. Acesse a interface no navegador pelo endereço exibido no terminal (geralmente `http://localhost:8501`).
+3. **Instale e configure o FFmpeg** conforme as instruções do sistema operacional.
 
-## Exemplo de uso 📖
+## Como Executar o Projeto
 
-1. Insira um texto como:
-   ```
-   Python é uma linguagem essencial para análise de dados devido à sua simplicidade e versatilidade.
-   ```
-2. Clique no botão "Gerar Áudio".
-3. Baixe o arquivo gerado clicando no botão "📥 Baixar Áudio".
+Inicie o aplicativo com o comando:
+```bash
+streamlit run app.py
+```
+Abra o navegador no endereço exibido (geralmente `http://localhost:8501`) para utilizar a interface.
+
+## Fluxo de Uso 📖
+
+1. **Inserção de Texto:**  
+   Na interface, insira o texto desejado na área de entrada.
+
+2. **Tradução (Opcional):**  
+   Clique no botão "Traduzir" para converter o texto para o idioma selecionado (disponível no menu lateral).
+
+3. **Geração de Áudio:**  
+   - Clique em "Gerar Áudio" para criar uma versão em áudio do texto original (utilizando `pyttsx3`).
+   - Se o texto foi traduzido, utilize "Gerar Áudio Traduzido" para criar um áudio da tradução (usando `gTTS`).
+
+4. **Edição e Reset:**  
+   - Use o botão "Editar Tradução" para copiar o texto traduzido de volta ao campo de entrada para ajustes.
+   - Clique em "Nova Tradução" para limpar a interface e iniciar uma nova conversão.
+
+5. **Download e Reprodução:**  
+   Utilize os botões de download para salvar os arquivos MP3 gerados e clique em "Ouvir Áudio" para reproduzir o áudio diretamente na interface.
+
+## Estrutura do Projeto
+
+- **app.py:**  
+  Contém o código principal do aplicativo, com:
+  - Configuração da página e carregamento do Font Awesome para ícones.
+  - Funções de callback para limpar texto, editar tradução e resetar a interface.
+  - Implementação da lógica de tradução, geração de áudio e download dos arquivos.
+  
+- **README.md:**  
+  Este documento, que explica o propósito, funcionalidades e como executar o projeto.
 
 ## Contribuições 🤝
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests para melhorar este projeto. 💡
+Contribuições são muito bem-vindas! Caso tenha sugestões de melhoria ou queira reportar problemas, abra uma _issue_ ou envie um _pull request_.
 
 ---
 
